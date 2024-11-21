@@ -39,6 +39,7 @@ const PermissionsModal = ({
     if (userDetails) {
       const updatedUser = { ...userDetails, permissions };
       onSaveUser(updatedUser); // Save user data with updated permissions
+      
     } else {
       onSavePermissions(permissions); // Save role permissions if applicable
     }

@@ -7,6 +7,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { users } from '../data';
 import EditUserModal from './EditUserModal';
 import AddUserModal from './AddUserModal';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const UserTable = () => {
     const [userData, setUserData] = useState(users);
@@ -15,8 +18,13 @@ const UserTable = () => {
     const [addUserModalOpen, setAddUserModalOpen] = useState(false);
 
     const handleDelete = (id) => {
-        setUserData(userData.filter(user => user.id !== id));
+        const userToDelete = userData.find(user => user.id === id);
+        if (userToDelete) {
+            setUserData(userData.filter(user => user.id !== id));
+            toast.success(`${userToDelete.name} has been deleted successfully!`);
+        }
     };
+    
 
     const handleEdit = (user) => {
         setSelectedUser(user);
@@ -33,7 +41,9 @@ const UserTable = () => {
     const handleAddUser = (newUser) => {
         setUserData(prevData => [...prevData, newUser]);
         setAddUserModalOpen(false);  // Close modal after adding user
+        toast.success(`${newUser.name} has been added successfully!`);
     };
+    
 
     const handleOpenAddUserModal = () => {
         // Reset the form data in AddUserModal before opening it
@@ -105,7 +115,6 @@ const UserTable = () => {
 };
 
 export default UserTable;
-
 
 
 
