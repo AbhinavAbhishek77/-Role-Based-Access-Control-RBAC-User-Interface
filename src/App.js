@@ -59,7 +59,7 @@ const App = () => {
   };
 
   return (
-    <div className="pt-8 w-full h-screen bg-blue-200">
+    <div className="pt-8 w-full min-h-screen bg-blue-200">
       <Container>
         <Typography variant="h4" gutterBottom>
           <p className="text-6xl mb-8 font-bold ">Admin Dashboard</p>
